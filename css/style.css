@@ -3704,4 +3704,31 @@ body.light-theme .whatsapp-fab {
 
 
 
+/* =========================================
+   CORREÇÃO DO BUG DO IPHONE (Beirada Inferior)
+   ========================================= */
 
+/* 1. Coloca um tapete preto debaixo de tudo para o iPhone não deixar buraco */
+html {
+    background-color: #0A0A0B !important; 
+}
+
+/* No tema claro, o tapete fica branco */
+body.light-theme {
+    background-color: #F7F8FA !important;
+}
+
+/* 2. Garante que o menu de baixo é sólido e desce até o fim da tela do iPhone */
+.bottom-nav {
+    background-color: #0A0A0B !important; /* Sólido no escuro */
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important; /* Encaixa no curvado do iPhone */
+}
+
+body.light-theme .bottom-nav {
+    background-color: #F7F8FA !important; /* Sólido no claro */
+}
+
+/* 3. Ajusta o botão do WhatsApp para ficar acima dessa beirada do iPhone */
+.whatsapp-fab {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+}
