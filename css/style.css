@@ -81,7 +81,7 @@ body::after {
     mix-blend-mode: overlay;
 }
 
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; touch-action: manipulation; }
 ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
@@ -89,6 +89,12 @@ a:focus-visible, button:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 4px;
     border-radius: 4px;
+}
+
+/* Garante que botões e links respondam instantaneamente no toque do celular */
+button, a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 /* 3. LAYOUT E CONTAINERS */
@@ -194,11 +200,13 @@ a:focus-visible, button:focus-visible {
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    /* Easing premium para a animação não ser mecânica */
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Otimizado: Em vez de 'all', dizemos exatamente o que deve animar */
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+                background-color 0.25s ease, 
+                box-shadow 0.25s ease, 
+                border-color 0.25s ease;
     border: none;
     text-align: center;
-    /* Sombra sutil para o botão parecer físico desde o início */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -372,19 +380,17 @@ a:focus-visible, button:focus-visible {
 
 .product-card {
     flex: 0 0 200px;
-    /* NOVIDADE: Gradiente sutil para dar profundidade (não fica chapado) */
     background: linear-gradient(180deg, var(--color-bg-tertiary) 0%, var(--color-bg-secondary) 100%);
     border-radius: var(--radius-md);
     scroll-snap-align: start;
     border: 1px solid var(--color-border);
     overflow: hidden;
-    /* NOVIDADE: Transição mais suave e incluindo o box-shadow */
+    /* Otimizado: Especifica as propriedades em vez de usar 'all' */
     transition: transform 0.25s ease-out, border-color 0.25s ease-out, box-shadow 0.25s ease-out;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     -webkit-tap-highlight-color: transparent;
-    /* NOVIDADE: Sombra suave para parecer que está flutuando */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -536,16 +542,18 @@ a:focus-visible, button:focus-visible {
     position: fixed;
     bottom: 0; left: 0;
     width: 100%;
-    /* Vidro fosco premium no lugar do sólido */
-    background-color: rgba(10, 10, 11, 0.75);
+    /* Vidro fosco premium */
+    background-color: rgba(10, 10, 11, 0.85);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-top: 1px solid var(--color-border);
     display: flex;
     justify-content: space-around;
     padding: var(--space-xs) 0;
+    /* Truque mágico para colar no fundo em celulares modernos (iPhone/Android) */
+    padding-bottom: calc(var(--space-xs) + env(safe-area-inset-bottom, 0px)) !important; 
     z-index: 1000;
-    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.2); /* Sombra para cima, dando profundidade */
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .bottom-nav__item {
@@ -565,12 +573,14 @@ a:focus-visible, button:focus-visible {
 .bottom-nav__item:active { transform: scale(0.95); }
 
 .footer {
-    padding: var(--space-lg) 0;
+    padding: 24px 0;
+    /* Garante que o texto do rodapé não fique escondido atrás do menu do celular */
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
     border-top: 1px solid var(--color-border);
     text-align: center;
     color: var(--text-tertiary);
     font-size: 0.85rem;
-    margin-top: var(--space-xl);
+    margin-top: 32px;
 }
 
 .footer__disclaimer { margin-top: var(--space-xs); font-size: 0.75rem; opacity: 0.7; }
