@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Renderiza os cards compactos com a nota embaixo
+                // Renderiza os cards compactos com a nota embaixo
         gridEl.innerHTML = pageItems.map(p => `
             <a href="produto.html?id=${p.id}" class="product-card">
                 <div class="product-card__img-wrap">
@@ -91,9 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
 
         renderPagination();
-        
-        // Rola para o topo da lista suavemente ao trocar de página
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Função para renderizar os botões de paginação (Inteligente)
@@ -142,11 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         paginationEl.innerHTML = buttons;
 
-        // Adiciona os eventos de clique nos botões
-        paginationEl.querySelectorAll('.page-btn').forEach(btn => {
+        
+                paginationEl.querySelectorAll('.page-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 if (!btn.disabled) {
                     renderPage(parseInt(btn.dataset.page));
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); // <--- COLOQUE AQUI
                 }
             });
         });
