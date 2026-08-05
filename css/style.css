@@ -3725,3 +3725,75 @@ body.light-theme .bottom-nav {
 
 
 
+
+
+
+
+
+
+
+/* =========================================
+   OTIMIZAÇÃO MOBILE (Apenas no Celular)
+   ========================================= */
+@media (max-width: 767px) {
+    
+    /* 1. Diminui o Menu de Baixo (Só ícones, mais fino) */
+    .bottom-nav {
+        padding: 6px 0 4px 0 !important; /* Menos espaço interno */
+    }
+    .bottom-nav__item span {
+        display: none !important; /* Esconde o texto de baixo do ícone */
+    }
+    .bottom-nav__item svg {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    /* 2. Diminui o Botão Flutuante do WhatsApp (Vira só uma bolinha) */
+    .whatsapp-fab {
+        padding: 10px !important; /* Menor */
+        bottom: 64px !important; /* Sobe para não bater no menu menor */
+    }
+    .whatsapp-fab__text {
+        display: none !important; /* Esconde o texto "Entrar no VIP" */
+    }
+    .whatsapp-fab__icon {
+        width: 28px !important;
+        height: 28px !important;
+        margin: 0 !important; /* Tira o espaço do texto que sumiu */
+    }
+
+    /* 3. Diminui os Cards de Produto na Home (Mais compactos e premium) */
+    .product-card {
+        flex: 0 0 140px !important; /* Menor largura (antes era 200px) */
+    }
+    .product-card__img-wrap {
+        aspect-ratio: 1 / 1 !important; /* Imagem quadrada (ocupa menos altura) */
+    }
+    .product-card__info {
+        padding: 8px 10px !important; /* Menos espaço interno */
+        gap: 2px !important;
+    }
+    .product-card__title {
+        font-size: 0.8rem !important; /* Texto menor */
+        min-height: 1.2em !important;
+        -webkit-line-clamp: 1 !important; /* Só 1 linha para o título */
+    }
+    .product-card__price {
+        font-size: 0.9rem !important;
+    }
+    .product-card__badge {
+        top: 6px !important;
+        padding: 3px 6px !important;
+        font-size: 0.65rem !important;
+    }
+    .product-card__badge--status {
+        font-size: 0.50rem !important;
+        right: 6px !important;
+    }
+}
+
+
+
+
+
