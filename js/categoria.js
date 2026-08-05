@@ -1,5 +1,5 @@
 // =========================================
-// ARTHUR RECOMENDA - PÁGINA DE CATEGORIA (PAGINAÇÃO)
+// ARTHUR RECOMENDA - PÁGINA DE CATEGORIA (PAGINAÇÃO + BUSCA)
 // =========================================
 import { produtos } from './produtos.js';
 
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleEl = document.getElementById('cat-title');
     const gridEl = document.getElementById('prod-grid');
     const paginationEl = document.getElementById('pagination-container');
+    const searchInput = document.getElementById('cat-search-input');
 
     // Configuração da Paginação
     let currentPage = 1;
@@ -25,17 +26,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para normalizar (ignorar acentos e maiúsculas)
     const normalizar = (texto) => texto ? texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') : '';
 
-    // Filtro aplicando a normalização
-    const filtered = produtos.filter(p => normalizar(p.categoriaKey) === normalizar(catKey));
+    // Base de produtos da categoria (fixa)
+    const baseProducts = produtos.filter(p => normalizar(p.categoriaKey) === normalizar(catKey));
+    // Lista atual (muda quando a pessoa digita na busca)
+    let currentProducts = baseProducts;
 
-    if (filtered.length === 0) {
+    if (baseProducts.length === 0) {
         titleEl.textContent = "Nenhum produto encontrado";
         paginationEl.innerHTML = '';
         return;
     }
 
     // Pega o nome bonito da categoria do primeiro produto encontrado
-    titleEl.textContent = filtered[0].categoria;
+    titleEl.textContent = baseProducts[0].categoria;
+
+    // Lógica de Busca dentro da Categoria
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = normalizar(e.target.value.trim());
+            
+            if (query.length > 0) {
+                // Se digitou algo, filtra a base
+                currentProducts = baseProducts.filter(p => normalizar(p.nome).includes(query));
+            } else {
+                // Se apagou o texto, volta a mostrar todos
+                currentProducts = baseProducts;
+            }
+            
+            currentPage = 1; // Volta para a primeira página ao buscar
+            renderPage(1);
+        });
+    }
 
     // Função para renderizar a página atual
     function renderPage(page) {
@@ -44,7 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calcula o início e o fim do fatiamento do array
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
-        const pageItems = filtered.slice(start, end);
+        const pageItems = currentProducts.slice(start, end);
+
+        // Se a busca não achou nada
+        if (currentProducts.length === 0) {
+            gridEl.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1 / -1; padding: 40px;">Nenhum produto encontrado com este nome nesta categoria.</p>`;
+            paginationEl.innerHTML = '';
+            return;
+        }
 
         // Renderiza os cards compactos com a nota embaixo
         gridEl.innerHTML = pageItems.map(p => `
@@ -68,9 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Função para renderizar os botões de paginação
+    // Função para renderizar os botões de paginação (Inteligente)
     function renderPagination() {
-        const totalPages = Math.ceil(filtered.length / itemsPerPage);
+        const totalPages = Math.ceil(currentProducts.length / itemsPerPage);
         
         // Se só tem 1 página, não mostra paginação
         if (totalPages <= 1) {
@@ -83,9 +111,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Botão Anterior
         buttons += `<button class="page-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>‹</button>`;
 
-        // Botões numéricos
-        for (let i = 1; i <= totalPages; i++) {
+        // Lógica inteligente para não mostrar todos os números (1 ... 4 5 6 ... 10)
+        const maxButtons = 3;
+        let startPage = Math.max(1, currentPage - 1);
+        let endPage = Math.min(totalPages, currentPage + 1);
+
+        if (currentPage <= 2) endPage = Math.min(totalPages, maxButtons);
+        if (currentPage >= totalPages - 1) startPage = Math.max(1, totalPages - 2);
+
+        if (startPage > 1) {
+            buttons += `<button class="page-btn ${1 === currentPage ? 'active' : ''}" data-page="1">1</button>`;
+            if (startPage > 2) {
+                buttons += `<span class="page-dots">...</span>`;
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
             buttons += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                buttons += `<span class="page-dots">...</span>`;
+            }
+            buttons += `<button class="page-btn ${totalPages === currentPage ? 'active' : ''}" data-page="${totalPages}">${totalPages}</button>`;
         }
 
         // Botão Próximo
