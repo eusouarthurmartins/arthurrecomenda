@@ -3684,54 +3684,6 @@ body.light-theme .whatsapp-fab {
 
 
 
-
-
-
-
-
-
-
-
-
-
-/* =========================================
-   FORÇA SAFE AREA IOS (MENU INFERIOR)
-   ========================================= */
-.bottom-nav {
-    bottom: 0 !important;
-    margin-bottom: 0 !important;
-    transform: none !important;
-    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-    /* Mantém seu visual intacto */
-    background-color: rgba(10, 10, 11, 0.85) !important;
-    backdrop-filter: saturate(180%) blur(20px) !important;
-    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
-    border-top: 1px solid var(--color-border) !important;
-    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.2) !important;
-}
-
-body.light-theme .bottom-nav {
-    background-color: rgba(247, 248, 250, 0.85) !important;
-}
-
-/* Ajusta o botão do WhatsApp para subir junto no iPhone */
-.whatsapp-fab {
-    bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================================
    OTIMIZAÇÃO MOBILE (Apenas no Celular)
    ========================================= */
