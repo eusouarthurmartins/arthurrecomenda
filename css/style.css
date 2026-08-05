@@ -3680,3 +3680,63 @@ body.light-theme .whatsapp-fab {
     color: #AED588 !important; /* Verde claro para o texto destacar no fundo escuro */
     backdrop-filter: blur(4px);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   AJUSTE DEFINITIVO DO MENU DE BAIXO (MOBILE)
+   ========================================= */
+
+/* 1. Força o menu a colar no fundo e tapa a beirada */
+.bottom-nav {
+    background-color: #0A0A0B; /* Fundo sólido para não deixar o fundo do site aparecer */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    /* Encaixa perfeitamente no fundo de celulares modernos (iPhone/Android) */
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. Ajusta o botão do WhatsApp para ficar ACIMA do menu e não cobrir ele */
+.whatsapp-fab {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* 3. Garante que o rodapé do site não fique escondido atrás do menu */
+.footer {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+    margin-top: 32px !important;
+}
+
+/* No tema claro, o fundo sólido do menu fica branco */
+body.light-theme .bottom-nav {
+    background-color: #F7F8FA; /* Fundo branco sólido no tema claro */
+}
