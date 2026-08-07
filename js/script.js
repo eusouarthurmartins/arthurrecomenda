@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderizarProdutoViral();
     gerarJsonLdHome(); // <--- CHAMADA DA AUTOMAÇÃO DO GOOGLE ADICIONADA AQUI
-    renderizarHeroDestaque(); // <--- CHAMADA DA NOVA FUNÇÃO ADICIONADA AQUI
+    // renderizarHeroDestaque(); // <--- DESATIVADA POIS A HERO FOI REMOVIDA
     renderizarCatalogoDinamico();
 
     // 4. PÁGINA DE PRODUTO
