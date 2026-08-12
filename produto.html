@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <title>Produto | Arthur Recomenda</title>
+    <meta name="description" content="Análise técnica e radar de preços deste produto. Veja se vale a pena comprar antes de decidir.">
+    <meta property="og:title" content="Análise de Produto | Arthur Recomenda">
+    <meta property="og:description" content="Veja a análise técnica e o radar de preços deste produto.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://arthurrecomenda.com/produto.html">
+    <meta property="og:image" content="https://arthurrecomenda.com/assets/img/banner-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Análise de Produto | Arthur Recomenda">
+    <meta name="twitter:description" content="Veja a análise técnica e o radar de preços deste produto.">
+    <meta name="twitter:image" content="https://arthurrecomenda.com/assets/img/banner-og.jpg">
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    
+    <meta name="theme-color" content="#000000">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="application/ld+json" id="produto-jsonld">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Produto Analisado",
+      "description": "Análise técnica de produto no Arthur Recomenda."
+    }
+    </script>
+</head>
+<body class="produto-page-body">
+
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="header__logo">
+                ARTHUR <span>RECOMENDA</span>
+            </a>
+                        <!-- BOTÃO DE TROCAR TEMA -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Trocar tema">
+                <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+
+            
+            
+        </div>
+    </header>
+
+    <main class="main-content produto-page is-loading">
+
+<div class="container">
+    <a href="javascript:history.back()" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Voltar
+    </a>
+</div>
+
+        
+        <section class="produto-hero animate-on-scroll">
+            <div class="container produto-hero__container">
+                <figure class="produto-hero__figure">
+                    <img data-js="produto-imagem" src="assets/img/placeholder.png" alt="Imagem do produto" class="produto-hero__img" width="600" height="600">
+                </figure>
+                <div class="produto-hero__info">
+                    <span class="badge badge--highlight" data-js="produto-categoria">Categoria</span>
+                    <h1 data-js="produto-nome">Nome do Produto</h1>
+                    <div class="produto-hero__preco-wrap">
+                        <span class="produto-hero__preco-anterior" data-js="produto-preco-anterior"></span>
+                        <span class="produto-hero__desconto" data-js="produto-desconto"></span>
+                        <p class="produto-hero__preco-atual" data-js="produto-preco-atual">R$ 0,00</p>
+                         <small class="produto-hero__marketplace" data-js="produto-marketplace"></small>
+                    </div> <!-- Fecha a caixa do preço (produto-hero__preco-wrap) -->
+
+                    <!-- NOVO BOTÃO DE COMPRA NO TOPO -->
+                    <div class="produto-hero__cta-topo" data-js="cta-topo-lista">
+                        <!-- O JavaScript vai preencher aqui -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="produto-video animate-on-scroll" data-js="video-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Teste em Vídeo</h2>
+                <div class="video-container" data-js="video-wrapper"></div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <aside class="sticky-buy-bar" data-js="sticky-bar">
+        <div class="sticky-preco">
+            <small>Preço Atual</small>
+            <span data-js="sticky-preco">R$ 0,00</span>
+        </div>
+        <a href="#" data-js="sticky-link" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Comprar Agora</a>
+    </aside>
+
+    
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
