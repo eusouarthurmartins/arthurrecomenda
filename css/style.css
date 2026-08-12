@@ -5490,3 +5490,23 @@ body, a, button, .shortcut-item, .product-card, .header__logo {
     -webkit-transform: translateZ(0);
     will-change: transform, scroll-position;
 }
+
+
+
+
+
+
+
+
+
+/* =========================================
+   CORREÇÃO: TIRAR ESPAÇO VAZIO ABAIXO DO RODAPÉ
+   ========================================= */
+body {
+    padding-bottom: 0px !important; /* Tira os 80px de espaço do menu antigo */
+}
+
+.footer {
+    padding-bottom: 24px !important; /* Coloca só um respiro normal */
+    margin-bottom: 0 !important;
+}
