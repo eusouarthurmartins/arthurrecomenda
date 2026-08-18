@@ -10953,6 +10953,40 @@ export const produtos = [
         pontosNegativos: ["Não indicado para espaços muito grandes", "Exige limpeza constante"]
     },
 
+    // Cole estes blocos dentro do seu array 'produtos' no arquivo produtos.js
+
+    {
+        id: 32285, 
+        nome: "Geladeira Electrolux Frost Free 400l Inverter Inox (if44s)", 
+        categoriaKey: "casa", 
+        categoria: "casa",
+        imagem: "https://http2.mlstatic.com/D_NQ_NP_965835-MLA106290869708_022026-O.webp", 
+        videoUrl: null,
+        notaArthur: 88, 
+        statusRadar: "Promoção ativada", 
+        statusClass: "status-good",
+        precoAtual: "R$ 2999,00", 
+        precoAnterior: "R$ 3559,00",  
+        desconto: "-16%",
+        opcoesCompra: [
+      { marketplace: "Loja Mercado Livre", preco: "R$ 2999,00", link: "https://meli.la/2ZC4X7P", observacao: "Clique aqui para ver desconto", destaque: true }
+        ],
+        veredito: { 
+            contexto: "Para quem não quer esvaziar o bolso, o Geladeira Electrolux Frost Free 400l Inverter Inox (if44s) entrega exatamente o que promete sem deixar a desejar.", 
+            problema: "Mata a saudade de um produto simples, direto e que cumpre exatamente o que promete na embalagem.", 
+            publico: "Pessoas que buscam qualidade, economia e facilidade de uso." 
+        },
+        avaliacao: { 
+            custo: 84, 
+            qualidade: 94, 
+            praticidade: 91, 
+            durabilidade: 86, 
+            inovacao: 96 
+        },
+        pontosPositivos: ["Não faz pouco barulho", "Eficiente na sua função", "Excelente relação entre preço e qualidade"],
+        pontosNegativos: ["Ajustes finos precisam ser feitos manualmente", "O acabamento tem algumas falhas pontuais"]
+    }
+
     
     
 
